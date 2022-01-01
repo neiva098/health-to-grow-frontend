@@ -77,20 +77,8 @@ export default function LogIn(props: { history: string[] }) {
           </div>
 
           <div className="links-container">
-            <Link to="/forgotPassword" className="back-link">
-              Esqueceu a senha?
-            </Link>
-
-            <Link to="/atleta/cadastro" className="back-link">
-              Seja um atleta associado
-            </Link>
-
-            <Link to="/nutri/cadastro" className="back-link">
-              Seja um nutricionista associado
-            </Link>
-            
-            <Link to="/personal/cadastro" className="back-link">
-              Seja um personal associado
+            <Link to="/cadastro" className="back-link">
+              Não tem uma conta? Associe-se!
             </Link>
           </div>
         </form>
