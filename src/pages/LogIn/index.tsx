@@ -77,7 +77,7 @@ export default function LogIn(props: { history: string[] }) {
           </div>
 
           <div className="links-container">
-            <Link to="/cadastro" className="back-link">
+            <Link to="/registry" className="back-link">
               Não tem uma conta? Associe-se!
             </Link>
           </div>
