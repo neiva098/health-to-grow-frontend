@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { AuthResponse } from "../interfaces/user";
+import { AuthResponse, UserInterface } from "../interfaces/user";
 
 import { setUserDataOnLocalStorage } from "../utils/user";
 import { clearSession } from "./auth";
@@ -43,4 +43,15 @@ export const logIn = async (
   privateApi.defaults.headers.authorization = apiResponse.data.token;
 
   return apiResponse.data;
+};
+
+export const createAthlete = async (
+  user: UserInterface
+): Promise<UserInterface> => {
+  return {
+    email: "neivacristiano@yahoo.com.br",
+    id: "id",
+    name: "Cristiano",
+    password: "pass",
+  };
 };
