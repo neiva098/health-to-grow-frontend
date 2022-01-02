@@ -1,0 +1,12 @@
+.select-container select {
+    width: 100%;
+    padding: 6px;
+    background-color: whitesmoke;
+    border: solid 1px #00AEED;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.select-container select:focus {
+    border: solid 1px #026a99;
+}

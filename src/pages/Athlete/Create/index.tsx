@@ -5,31 +5,35 @@ import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { errorHandler } from "../../../utils/errors";
 import { createAthlete } from "../../../services/api";
+import Schedule from "../../../components/Schedule";
+import Select, { SeletOptionInterface } from "../../../components/Select";
 
 const CreateAthlete = (props: { history: string[] }) => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [permissions, setPermissions] = useState({
-        alterUsers: false,
-        alterCertificates: false,
-        receiveEmails: false,
-        testCertificates: false,
-        getConsults: false,
-        all: false
-    })
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [nutricionista, setNutricionista] = useState("");
+  const [personal, setPersonal] = useState("");
 
-    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
+  const nuricionistas: SeletOptionInterface[] = [{ value: "id", label: "Jao" }];
 
-        try {
-            const apiCreateAthleteRes = await createAthlete({name, email, password})
+  const personais: SeletOptionInterface[] = [{ value: "id", label: "Pedro" }];
 
-            props.history.push('/')
-        } catch (e) {
-            errorHandler(e)
-        }
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    try {
+     await createAthlete({
+        name,
+        email,
+        password,
+      });
+
+      props.history.push("/");
+    } catch (e) {
+      errorHandler(e);
     }
+  }
   return (
     <div className="container">
       <div className="form-content">
@@ -37,7 +41,8 @@ const CreateAthlete = (props: { history: string[] }) => {
           <MdLibraryBooks size={150} className="icon"></MdLibraryBooks>
           <h1>Cadastre-se</h1>
           <p>
-            Para se cadastrar precisamos que você preencha algumas informações e marque os horários com profissionais.
+            Para se cadastrar precisamos que você preencha algumas informações e
+            marque os horários com profissionais.
           </p>
           <Link className="back-link" to="/">
             <FiArrowLeft size={16} color="#E02041" />
@@ -45,7 +50,10 @@ const CreateAthlete = (props: { history: string[] }) => {
           </Link>
         </section>
 
-        <form className='data-container' onSubmit={async (e) => await handleSubmit(e)}>
+        <form
+          className="data-container"
+          onSubmit={async (e) => await handleSubmit(e)}
+        >
           <input
             placeholder="Nome do usuário"
             value={name}
@@ -75,6 +83,22 @@ const CreateAthlete = (props: { history: string[] }) => {
               setPassword(event.target.value)
             }
           ></input>
+
+          <p>Nutricionista:</p>
+          <Select
+            options={nuricionistas}
+            default="Selecione o nurticionista"
+            setState={setNutricionista}
+          />
+          <Schedule history={props.history} />
+
+          <p>Personal:</p>
+          <Select
+            options={personais}
+            default="Selecione o personal"
+            setState={setPersonal}
+          />
+          <Schedule history={props.history} />
 
           <button className="button" type="submit">
             Cadastrar

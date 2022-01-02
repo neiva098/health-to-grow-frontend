@@ -178,3 +178,8 @@ form textarea {
 .form-content .data-container input, .form-content .data-container textarea {
   margin-top: 8px;
 }
+
+.data-container p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
