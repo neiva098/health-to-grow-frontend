@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IPersonal } from "../interfaces/personal";
 
 import { AuthResponse, UserInterface } from "../interfaces/user";
 
@@ -53,5 +54,17 @@ export const createAthlete = async (
     id: "id",
     name: "Cristiano",
     password: "pass",
+  };
+};
+
+export const createPersonal = async (
+  personal: IPersonal
+): Promise<IPersonal> => {
+  return {
+    email: "neivacristiano@yahoo.com.br",
+    id: "id",
+    name: "Cristiano",
+    password: "pass",
+    cref: "cref",
   };
 };
