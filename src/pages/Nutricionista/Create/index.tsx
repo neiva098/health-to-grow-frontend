@@ -5,23 +5,23 @@ import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { errorHandler } from "../../../utils/errors";
 
-import { createPersonal } from "../../../services/api";
+import { createNutricionista } from "../../../services/api";
 
-const CreatePersonal = (props: { history: string[] }) => {
+const CreateNutricionista = (props: { history: string[] }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cref, setCref] = useState("");
+  const [crn, setCrn] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     try {
-      await createPersonal({
+      await createNutricionista({
         name,
         email,
         password,
-        cref,
+        crn,
       });
 
       props.history.push("/");
@@ -37,7 +37,7 @@ const CreatePersonal = (props: { history: string[] }) => {
           <h1>Cadastre-se</h1>
           <p>
             Para se cadastrar precisamos que você preencha algumas informações,
-            incluindo o cadastro no conselho regional de educação física, sua
+            incluindo o cadastro no conselho regional de nutricionistas, sua
             conta será liberada depois da checagem do cadastro.
           </p>
           <Link className="back-link" to="/">
@@ -81,11 +81,11 @@ const CreatePersonal = (props: { history: string[] }) => {
           ></input>
 
           <input
-            placeholder="Cadastro CREF"
-            value={cref}
+            placeholder="Cadastro CRN"
+            value={crn}
             required={true}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              setCref(event.target.value)
+              setCrn(event.target.value)
             }
           ></input>
 
@@ -98,4 +98,4 @@ const CreatePersonal = (props: { history: string[] }) => {
   );
 };
 
-export default CreatePersonal;
+export default CreateNutricionista;
