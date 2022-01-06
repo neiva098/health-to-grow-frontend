@@ -1,0 +1,13 @@
+.user-home {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('imagem.jpg');
+    background-attachment: local;
+}
