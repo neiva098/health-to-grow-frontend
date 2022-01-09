@@ -7,6 +7,7 @@ export interface UserInterface {
   credentialType?: string;
   credential?: string;
   avaliableAppointaments?: { data: string; horarios: string[] }[];
+  type?: string;
 }
 
 export interface Appointament {

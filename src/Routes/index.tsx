@@ -9,6 +9,7 @@ import CreateAthlete from '../pages/Athlete/Create'
 import CreatePersonal from '../pages/Personal/Create'
 import CreateNutricionista from '../pages/Nutricionista/Create'
 import AthleteHome from '../pages/Athlete/Home'
+import AthleteConsultList from '../pages/Athlete/Consultas/List'
 
 const Routes = () => {
     return (
@@ -20,6 +21,7 @@ const Routes = () => {
                 <Route exact path='/registry/personal' component={CreatePersonal}></Route>
                 <Route exact path='/registry/nutricionista' component={CreateNutricionista}></Route>
                 <Route exact path='/athlete/home' component={AthleteHome}></Route>
+                <Route exact path='/athlete/consults' component={AthleteConsultList}></Route>
                 <Route exact path='/unauthorized' component={NotAuthorized} />
                 <Route component={NotFound}></Route>
             </Switch>

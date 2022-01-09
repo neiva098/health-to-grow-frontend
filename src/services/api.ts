@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IAppointament } from "../interfaces/appointaments";
 import { INutricionista } from "../interfaces/nutricionista";
 import { IPersonal } from "../interfaces/personal";
 
@@ -120,6 +121,43 @@ export const getPersonais = async (): Promise<IPersonal[]> => {
       password: "pass",
       credentialType: "CREF",
       credential: "cref2",
+    },
+  ];
+};
+
+export const getUserAppointaments = async (
+  userId: string
+): Promise<IAppointament[]> => {
+  return [
+    {
+      id: "1",
+      data: new Date().toISOString(),
+      specialist: {
+        name: "Joao",
+        email: "email@mail.com",
+        type: "nutricionista",
+      },
+      status: "Marcada",
+    },
+    {
+      id: "2",
+      data: new Date().toISOString(),
+      specialist: {
+        name: "Felipe",
+        email: "email@mail.com",
+        type: "personal",
+      },
+      status: "Cancelada",
+    },
+    {
+      id: "3",
+      data: new Date().toISOString(),
+      specialist: {
+        name: "Felipe",
+        email: "email@mail.com",
+        type: "personal",
+      },
+      status: "Concluida",
     },
   ];
 };

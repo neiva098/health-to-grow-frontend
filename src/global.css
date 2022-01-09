@@ -203,3 +203,58 @@ form textarea {
 .select-container option {
   background-color: white;
 }
+
+.square-container {
+  width: 100%;
+  min-height: 78vh;
+  padding: 38px;
+  background: #f0f0f5;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+}
+
+.square-container table {
+  margin-top: 30px;
+  justify-content: space-between;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.square-container tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.square-container tr:nth-child(odd) {
+  background-color: white;
+}
+
+.square-container table thead tr th {
+  background-color: #00aeed;
+  border: solid #00aeed 0.5px;
+  color: whitesmoke;
+  height: 45px;
+}
+
+.square-container table tbody tr {
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.square-container table tbody tr:hover {
+  background-color: #026a99;
+  color: white;
+}
+
+.square-container table tbody tr th {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+  height: 40px;
+  font-weight: lighter;
+  font-size: 17px;
+}
+
+.search-title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

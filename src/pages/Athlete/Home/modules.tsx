@@ -7,16 +7,16 @@ export const homeModules: ModuleComponent[] = [
     {
         icon:  <GiOpenedFoodCan size={65} className='icon' ></GiOpenedFoodCan>,
         title: 'Dieta',
-        action: (props: {history: string[]}) => props.history.push('/fiscofacil/certificates/list')
+        action: (props: {history: string[]}) => props.history.push('/')
     },
     {
         icon: <GiGymBag  size={65} className='icon' ></GiGymBag>,
         title: 'Ficha de Treino',
-        action: (props: {history: string[]}) => props.history.push('/fiscofacil/users/list')
+        action: (props: {history: string[]}) => props.history.push('/')
     },
     {
         icon:  <GiCalendar size={65} className='icon' color=''></GiCalendar>,
-        title: 'Agendamentos',
-        action: (props: {history: string[]}) => props.history.push('/fiscofacil/consults/list')
+        title: 'Consultas',
+        action: (props: {history: string[]}) => props.history.push('/athlete/consults')
     },
 ]
