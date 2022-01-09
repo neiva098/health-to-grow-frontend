@@ -66,7 +66,7 @@ export const createPersonal = async (
     id: "id",
     name: "Cristiano",
     password: "pass",
-    cref: "cref",
+    credential: "cref",
   };
 };
 
@@ -78,6 +78,63 @@ export const createNutricionista = async (
     id: "id",
     name: "Cristiano",
     password: "pass",
-    crn: "crn",
+    credential: "crn",
   };
+};
+
+export const getNutricionistas = async (): Promise<INutricionista[]> => {
+  return [
+    {
+      email: "neivacristiano@yahoo.com.br",
+      id: "id1",
+      name: "Cristiano",
+      password: "pass",
+      credentialType: "CRN",
+      credential: "crn1",
+    },
+    {
+      email: "neivacristiano@yahoo.com.br",
+      id: "id2",
+      name: "Felipe",
+      password: "pass",
+      credentialType: "CRN",
+      credential: "crn2",
+    },
+  ];
+};
+
+export const getPersonais = async (): Promise<IPersonal[]> => {
+  return [
+    {
+      email: "neivacristiano@yahoo.com.br",
+      id: "id1",
+      name: "Cristiano",
+      password: "pass",
+      credentialType: "CREF",
+      credential: "cref1",
+    },
+    {
+      email: "neivacristiano@yahoo.com.br",
+      id: "id2",
+      name: "Felipe",
+      password: "pass",
+      credentialType: "CREF",
+      credential: "cref2",
+    },
+  ];
+};
+
+export const getAvaliableAppointaments = async (
+  userId: string
+): Promise<{ data: string; horarios: string[] }[]> => {
+  return [
+    {
+      data: "2022-01-01",
+      horarios: ["08:00", "09:00"],
+    },
+    {
+      data: "2022-01-04",
+      horarios: ["12:00", "09:00"],
+    },
+  ];
 };

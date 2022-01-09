@@ -4,20 +4,13 @@ import { MdLibraryBooks } from "react-icons/md";
 import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { errorHandler } from "../../../utils/errors";
-import { createAthlete } from "../../../services/api";
+import { createAthlete, getNutricionistas, getPersonais } from "../../../services/api";
 import Schedule from "../../../components/Schedule";
-import Select, { SeletOptionInterface } from "../../../components/Select";
 
 const CreateAthlete = (props: { history: string[] }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [nutricionista, setNutricionista] = useState("");
-  const [personal, setPersonal] = useState("");
-
-  const nuricionistas: SeletOptionInterface[] = [{ value: "id", label: "Jao" }];
-
-  const personais: SeletOptionInterface[] = [{ value: "id", label: "Pedro" }];
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -84,21 +77,10 @@ const CreateAthlete = (props: { history: string[] }) => {
             }
           ></input>
 
-          <p>Nutricionista:</p>
-          <Select
-            options={nuricionistas}
-            default="Selecione o nurticionista"
-            setState={setNutricionista}
-          />
-          <Schedule history={props.history} />
+  
+          <Schedule history={props.history}actor='Nutricionista' getActors={getNutricionistas} />
 
-          <p>Personal:</p>
-          <Select
-            options={personais}
-            default="Selecione o personal"
-            setState={setPersonal}
-          />
-          <Schedule history={props.history} />
+          <Schedule history={props.history} actor='Personal' getActors={getPersonais} />
 
           <button className="button" type="submit">
             Cadastrar

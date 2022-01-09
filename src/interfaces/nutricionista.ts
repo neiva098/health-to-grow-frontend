@@ -1,5 +1,3 @@
 import { UserInterface } from "./user";
 
-export type INutricionista = UserInterface & {
-  crn: string;
-};
+export type INutricionista = UserInterface;

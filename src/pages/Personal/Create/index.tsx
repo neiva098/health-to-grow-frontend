@@ -21,7 +21,7 @@ const CreatePersonal = (props: { history: string[] }) => {
         name,
         email,
         password,
-        cref,
+        credential: cref,
       });
 
       props.history.push("/");

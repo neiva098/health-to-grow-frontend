@@ -1,35 +1,98 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { UserInterface } from "../../interfaces/user";
+import { getAvaliableAppointaments } from "../../services/api";
+import { errorHandler } from "../../utils/errors";
 
 interface OwnProps {
   history: string[];
+  getActors: () => Promise<UserInterface[]>
+  actor: string
 }
 
 const Schedule = (props: OwnProps) => {
-  const [hora, setHora] = useState("");
-  const [data, setData] = useState("");
+  const [selectedActor, setSelectedActor] = useState<string | undefined>()
+  const [actors, setActors] = useState<UserInterface[]>([])
+
+  const [hora, setHora] = useState('')
+  const [data, setData] = useState('')
+
+  const [disponivelDh, setDisponivelDh] = useState<{ data: string, horarios: string[] }[]>([])
+
+
+  useEffect(() => {
+      async function findActors() {
+          try {
+              setActors(await props.getActors())
+          } catch (e) {
+              errorHandler(e)
+          }
+      }
+
+      findActors()
+
+  }, [props])
+
+  useEffect(() => {
+    async function findAvaliableAppointaments() {
+        try {
+            setDisponivelDh(await getAvaliableAppointaments(selectedActor!))
+        } catch (e) {
+            errorHandler(e)
+        }
+    }
+
+    if (selectedActor) findAvaliableAppointaments()
+}, [selectedActor])
+
 
   return (
     <div className="schedule-data">
-      <div className="schedule-field">
-        <p>Data:</p>
-        <input
-          type="date"
-          value={data}
-          onChange={(e) => setData(e.target.value)}
-          placeholder="Data"
-        />
+      <label className="form-label">{props.actor}:</label>
+      <div className="select-container">
+        <select
+          value={selectedActor}
+          onChange={(e) => setSelectedActor(e.target.value)}
+        >
+          <option hidden>{props.actor}</option>
+          {actors.map((Actor) => {
+            return (
+              <option
+                key={Actor.id}
+                value={Actor.id}
+              >{`${Actor.name} ${Actor.credentialType}: ${Actor?.credential}`}</option>
+            );
+          })}
+        </select>
       </div>
-      <div className="schedule-field">
-        <p>Horario:</p>
-        <input
-          type="time"
-          value={hora}
-          onChange={(e) => {
-            if (["00", "30"].includes(e.target.value.substr(3, 2)))
-              setHora(e.target.value);
-          }}
-          step="1800"
-        />
+
+      <label className="form-label">Data:</label>
+      <input
+        type="date"
+        value={data}
+        required={true}
+        min={new Date().toDateString()}
+        onChange={(e) => {
+          console.log(e.target.value)
+          if (disponivelDh.map((dh) => dh.data).includes(e.target.value))
+            setData(e.target.value);
+        }}
+        placeholder="Data"
+      />
+
+      <label className="form-label">Horario:</label>
+      <div className="select-container">
+        <select value={hora} onChange={(e) => setHora(e.target.value)}>
+          <option hidden>Hora</option>
+          {disponivelDh
+            .find((dh) => dh.data === data)
+            ?.horarios.map((hr, index) => {
+              return (
+                <option key={hr} value={hr}>
+                  {hr}
+                </option>
+              );
+            })}
+        </select>
       </div>
     </div>
   );
