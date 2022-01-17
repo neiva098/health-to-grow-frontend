@@ -10,7 +10,8 @@ import CreatePersonal from '../pages/Personal/Create'
 import CreateNutricionista from '../pages/Nutricionista/Create'
 import AthleteHome from '../pages/Athlete/Home'
 import AthleteConsultList from '../pages/Athlete/Consultas/List'
-import AgendarNutricionista from '../pages/Personal/Consulta/Marcar'
+import AgendarNutricionista from '../pages/Nutricionista/Consulta/Marcar'
+import AgendarPersonal from '../pages/Nutricionista/Consulta/Marcar'
 
 const Routes = () => {
     return (
@@ -24,6 +25,7 @@ const Routes = () => {
                 <Route exact path='/athlete/home' component={AthleteHome}></Route>
                 <Route exact path='/athlete/consults' component={AthleteConsultList}></Route>
                 <Route exact path='/athlete/consult/nutricionista/create' component={AgendarNutricionista}></Route>
+                <Route exact path='/athlete/consult/personal/create' component={AgendarPersonal}></Route>
                 <Route exact path='/unauthorized' component={NotAuthorized} />
                 <Route component={NotFound}></Route>
             </Switch>
