@@ -4,10 +4,10 @@ import { AiFillClockCircle } from "react-icons/ai";
 import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Schedule from "../../../../components/Schedule";
-import { getNutricionistas } from "../../../../services/api";
+import { getNutricionistas, getPersonais } from "../../../../services/api";
 import { errorHandler } from "../../../../utils/errors";
 
-const AgendarNutricionista = (props: { history: string[] }) => {
+const AgendarPersonal = (props: { history: string[] }) => {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -39,7 +39,7 @@ const AgendarNutricionista = (props: { history: string[] }) => {
           className="data-container"
           onSubmit={async (e) => await handleSubmit(e)}
         >
-          <Schedule history={props.history}actor='Nutricionista' getActors={getNutricionistas} />
+          <Schedule history={props.history}actor='Personal' getActors={getPersonais} />
 
           <button className="button" type="submit">
             Cadastrar
@@ -50,4 +50,4 @@ const AgendarNutricionista = (props: { history: string[] }) => {
   );
 };
 
-export default AgendarNutricionista;
+export default AgendarPersonal;

@@ -24,7 +24,7 @@ const HeaderList = (props: { history: string[] }) => {
         </p>
         <p
           className="link-header"
-          onClick={() => props.history.push("/athlete/consult/personanl/create")}
+          onClick={() => props.history.push("/athlete/consult/personal/create")}
         >
           Agendar Personal
         </p>
