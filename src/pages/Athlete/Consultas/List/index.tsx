@@ -43,7 +43,9 @@ const AthleteConsultList = (props: { history: string[] }) => {
                         {
                             appointaments.map(appointament => {
                                 return (
-                                    <tr key={appointament.id}>
+                                    <tr key={appointament.id} onClick={() => {
+                                        props.history.push('/athlete/consults/details/teste')
+                                    }}>
                                         <th className='propertie-column'>{appointament.specialist.name}</th>
                                         <th className='propertie-column'>{appointament.specialist.email}</th>
                                         <th className='propertie-column'>{new Date(appointament.data).toLocaleDateString()}</th>
