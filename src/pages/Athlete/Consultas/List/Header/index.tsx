@@ -18,9 +18,15 @@ const HeaderList = (props: { history: string[] }) => {
       <div className="group-header">
         <p
           className="link-header"
-          onClick={() => props.history.push("/athlete/consult/create")}
+          onClick={() => props.history.push("/athlete/consult/nutricionista/create")}
         >
-          Agendar
+          Agendar Nutricionista
+        </p>
+        <p
+          className="link-header"
+          onClick={() => props.history.push("/athlete/consult/personanl/create")}
+        >
+          Agendar Personal
         </p>
       </div>
     </div>
