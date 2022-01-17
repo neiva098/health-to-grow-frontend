@@ -1,0 +1,56 @@
+.modules-container {
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: -webkit-box;
+}
+
+.modules-container ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 90px;
+    list-style: none;
+}
+
+.modules-container ul li {
+    cursor: pointer;
+    border: solid white 0.5px;
+    border-radius: 9px;
+    width: 210px;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    transition: 0.4s;
+}
+
+.modules-container ul li:hover {
+    background-color: #026A99;
+    border-color: white;
+}
+
+.modules-container ul li .icon {
+    margin-top: 70px;
+    color: #00AEED;
+}
+
+.modules-container ul li:hover .icon {
+    color: white;
+}
+
+.modules-container ul li p {
+    margin-top: 15px;
+    text-align: justify;
+    font: 500 18px Roboto, sans-serif;
+    color: #00AEED;
+}
+
+.modules-container ul li:hover p {
+    color: white;
+}
