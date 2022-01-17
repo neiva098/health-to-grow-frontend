@@ -5,4 +5,5 @@ export interface IAppointament {
   data: string;
   specialist: UserInterface;
   status: string;
+  observacoes?: string;
 }
