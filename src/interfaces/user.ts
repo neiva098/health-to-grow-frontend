@@ -23,3 +23,11 @@ export interface AuthResponse {
   token: string;
   id: string;
 }
+
+export interface IExercice {
+  id: string;
+  nome: string;
+  serie: string;
+  repeticoes: string;
+  carga: string;
+}

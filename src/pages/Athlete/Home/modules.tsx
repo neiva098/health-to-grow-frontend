@@ -12,7 +12,7 @@ export const homeModules: ModuleComponent[] = [
     {
         icon: <GiGymBag  size={65} className='icon' ></GiGymBag>,
         title: 'Ficha de Treino',
-        action: (props: {history: string[]}) => props.history.push('/')
+        action: (props: {history: string[]}) => props.history.push('/athlete/ficha')
     },
     {
         icon:  <GiCalendar size={65} className='icon' color=''></GiCalendar>,

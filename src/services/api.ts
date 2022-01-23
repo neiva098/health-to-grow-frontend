@@ -3,7 +3,7 @@ import { IAppointament } from "../interfaces/appointaments";
 import { INutricionista } from "../interfaces/nutricionista";
 import { IPersonal } from "../interfaces/personal";
 
-import { AuthResponse, UserInterface } from "../interfaces/user";
+import { AuthResponse, IExercice, UserInterface } from "../interfaces/user";
 
 import { setUserDataOnLocalStorage } from "../utils/user";
 import { clearSession } from "./auth";
@@ -173,6 +173,25 @@ export const getAvaliableAppointaments = async (
     {
       data: "2022-01-04",
       horarios: ["12:00", "09:00"],
+    },
+  ];
+};
+
+export const getExercises = async (): Promise<IExercice[]> => {
+  return [
+    {
+      id: "1",
+      carga: "34 Kg",
+      nome: "Agachamento",
+      repeticoes: "15",
+      serie: "3",
+    },
+    {
+      id: "2",
+      carga: "20 Kg",
+      nome: "Supino Vertical",
+      repeticoes: "12",
+      serie: "3",
     },
   ];
 };
