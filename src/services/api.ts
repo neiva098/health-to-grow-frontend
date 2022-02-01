@@ -28,19 +28,10 @@ export const logIn = async (
 ): Promise<AuthResponse> => {
   clearSession();
 
-  const apiResponse = {
-    data: {
-      email: "neivacristiano@yahoo.com.br",
-      id: "id",
-      name: "Cristiano",
-      token: "token",
-    } as AuthResponse,
-  };
-
-  // const apiResponse = await publicApi.post("/api/users/authenticate", {
-  //   email,
-  //   password,
-  // });
+  const apiResponse = await publicApi.post("/api/users/auth", {
+    email,
+    password,
+  });
 
   setUserDataOnLocalStorage(apiResponse.data);
   privateApi.defaults.headers.authorization = apiResponse.data.token;
