@@ -1,3 +1,4 @@
+import { ICreateUser, IUser } from './../interfaces/user';
 import axios from "axios";
 import { IAppointament } from "../interfaces/appointaments";
 import { INutricionista } from "../interfaces/nutricionista";
@@ -40,14 +41,11 @@ export const logIn = async (
 };
 
 export const createAthlete = async (
-  user: UserInterface
-): Promise<UserInterface> => {
-  return {
-    email: "neivacristiano@yahoo.com.br",
-    id: "id",
-    name: "Cristiano",
-    password: "pass",
-  };
+  user: ICreateUser
+): Promise<IUser> => {
+  const res = await publicApi.post('/api/users', user)
+
+  return res.data
 };
 
 export const createPersonal = async (
@@ -158,11 +156,11 @@ export const getAvaliableAppointaments = async (
 ): Promise<{ data: string; horarios: string[] }[]> => {
   return [
     {
-      data: "2022-01-01",
+      data: "2022-02-05",
       horarios: ["08:00", "09:00"],
     },
     {
-      data: "2022-01-04",
+      data: "2022-02-05",
       horarios: ["12:00", "09:00"],
     },
   ];

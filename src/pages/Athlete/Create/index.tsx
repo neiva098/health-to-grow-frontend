@@ -20,6 +20,18 @@ const CreateAthlete = (props: { history: string[] }) => {
         name,
         email,
         password,
+        atletaProfile: {
+          consultas: [
+            {
+              "dateTime": "2022-02-01T02:51:47.383Z",
+              "codigoEspecialista": "dd702108-e48f-4de8-ab3b-590c4e4f4545"
+            },
+            {
+              "dateTime": "2022-02-01T02:51:47.383Z",
+              "codigoEspecialista": "bcff3a05-ef59-4710-80c2-872f7e78fdfd"
+            }
+          ]
+        }
       });
 
       props.history.push("/");

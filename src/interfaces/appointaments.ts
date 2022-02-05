@@ -7,3 +7,7 @@ export interface IAppointament {
   status: string;
   observacoes?: string;
 }
+
+export interface IAtletaProfile {
+  consultas: any[];
+}

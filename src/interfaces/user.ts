@@ -1,3 +1,5 @@
+import { IAtletaProfile } from "./appointaments";
+
 export interface UserInterface {
   id?: string;
   name: string;
@@ -9,6 +11,19 @@ export interface UserInterface {
   avaliableAppointaments?: { data: string; horarios: string[] }[];
   type?: string;
 }
+
+export interface IUser {
+  id: string;
+  email: string;
+  name: string;
+  password: string;
+
+  atletaProfile?: IAtletaProfile;
+}
+
+export interface ICreateUser extends Omit<IUser, 'id'> {}
+
+
 
 export interface Appointament {
   client: UserInterface;
