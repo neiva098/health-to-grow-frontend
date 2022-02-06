@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { UserInterface } from "../../interfaces/user";
+import { IRelationedProfissional } from "../../interfaces/profissional";
 import { getAvaliableAppointaments } from "../../services/api";
 import { errorHandler } from "../../utils/errors";
 
 interface OwnProps {
   history: string[];
-  getActors: () => Promise<UserInterface[]>
+  getActors: () => Promise<IRelationedProfissional[]>
   actor: string
 }
 
 const Schedule = (props: OwnProps) => {
   const [selectedActor, setSelectedActor] = useState<string | undefined>()
-  const [actors, setActors] = useState<UserInterface[]>([])
+  const [actors, setActors] = useState<IRelationedProfissional[]>([])
 
   const [hora, setHora] = useState('')
   const [data, setData] = useState('')
@@ -57,9 +57,9 @@ const Schedule = (props: OwnProps) => {
           {actors.map((Actor) => {
             return (
               <option
-                key={Actor.id}
-                value={Actor.id}
-              >{`${Actor.name} ${Actor.credentialType}: ${Actor?.credential}`}</option>
+                key={Actor.codigoPessoa}
+                value={Actor.codigoPessoa}
+              >{`${Actor.pessoa.name} ${Actor.credentialType}: ${Actor?.credential}`}</option>
             );
           })}
         </select>

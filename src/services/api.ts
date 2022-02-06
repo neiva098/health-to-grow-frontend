@@ -1,3 +1,4 @@
+import { IRelationedProfissional } from './../interfaces/profissional';
 import { ICreateUser, IUser } from './../interfaces/user';
 import axios from "axios";
 import { IAppointament } from "../interfaces/appointaments";
@@ -72,46 +73,16 @@ export const createNutricionista = async (
   };
 };
 
-export const getNutricionistas = async (): Promise<INutricionista[]> => {
-  return [
-    {
-      email: "neivacristiano@yahoo.com.br",
-      id: "id1",
-      name: "Cristiano",
-      password: "pass",
-      credentialType: "CRN",
-      credential: "crn1",
-    },
-    {
-      email: "neivacristiano@yahoo.com.br",
-      id: "id2",
-      name: "Felipe",
-      password: "pass",
-      credentialType: "CRN",
-      credential: "crn2",
-    },
-  ];
+export const getNutricionistas = async (): Promise<IRelationedProfissional[]> => {
+  const response = await publicApi.get('/api/profissionais?type=nutricionista');
+
+  return response.data
 };
 
-export const getPersonais = async (): Promise<IPersonal[]> => {
-  return [
-    {
-      email: "neivacristiano@yahoo.com.br",
-      id: "id1",
-      name: "Cristiano",
-      password: "pass",
-      credentialType: "CREF",
-      credential: "cref1",
-    },
-    {
-      email: "neivacristiano@yahoo.com.br",
-      id: "id2",
-      name: "Felipe",
-      password: "pass",
-      credentialType: "CREF",
-      credential: "cref2",
-    },
-  ];
+export const getPersonais = async (): Promise<IRelationedProfissional[]> => {
+  const response = await publicApi.get('/api/profissionais?type=personal');
+
+  return response.data
 };
 
 export const getUserAppointaments = async (
@@ -154,16 +125,9 @@ export const getUserAppointaments = async (
 export const getAvaliableAppointaments = async (
   userId: string
 ): Promise<{ data: string; horarios: string[] }[]> => {
-  return [
-    {
-      data: "2022-02-05",
-      horarios: ["08:00", "09:00"],
-    },
-    {
-      data: "2022-02-05",
-      horarios: ["12:00", "09:00"],
-    },
-  ];
+  const response = await publicApi.get(`/api/consultas/avaliable/${userId}`);
+
+  return response.data
 };
 
 export const getExercises = async (): Promise<IExercice[]> => {
