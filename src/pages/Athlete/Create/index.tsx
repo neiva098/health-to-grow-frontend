@@ -12,6 +12,36 @@ const CreateAthlete = (props: { history: string[] }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [consultaNutricionista, setConsultaDataNutri] = useState<any>(undefined)
+  const [consultaPersonal, setConsultaDataPersonal] = useState<any>(undefined)
+
+  function setConsultaNutricionista(data: string, hora: string, codigoEspecialista: string) {
+    const dateTime = new Date(`${data}T${hora}`).toISOString()
+
+    console.log(dateTime)
+
+    setConsultaDataNutri({
+      codigoEspecialista,
+      dateTime
+    })
+
+    return consultaNutricionista
+  }
+
+  function setConsultaPersonal(data: string, hora: string, codigoEspecialista: string) {
+    const dateTime = new Date(`${data}T${hora}`).toISOString()
+
+    console.log(dateTime)
+
+    setConsultaDataPersonal( {
+      codigoEspecialista,
+      dateTime
+    })
+
+    return consultaPersonal
+  }
+
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -22,14 +52,8 @@ const CreateAthlete = (props: { history: string[] }) => {
         password,
         atletaProfile: {
           consultas: [
-            {
-              "dateTime": "2022-02-01T02:51:47.383Z",
-              "codigoEspecialista": "dd702108-e48f-4de8-ab3b-590c4e4f4545"
-            },
-            {
-              "dateTime": "2022-02-01T02:51:47.383Z",
-              "codigoEspecialista": "bcff3a05-ef59-4710-80c2-872f7e78fdfd"
-            }
+            consultaNutricionista,
+            consultaPersonal
           ]
         }
       });
@@ -90,9 +114,9 @@ const CreateAthlete = (props: { history: string[] }) => {
           ></input>
 
   
-          <Schedule history={props.history}actor='Nutricionista' getActors={getNutricionistas} />
+          <Schedule history={props.history}actor='Nutricionista' getActors={getNutricionistas} setSchedule={setConsultaNutricionista} />
 
-          <Schedule history={props.history} actor='Personal' getActors={getPersonais} />
+          <Schedule history={props.history} actor='Personal' getActors={getPersonais}  setSchedule={setConsultaPersonal}  />
 
           <button className="button" type="submit">
             Cadastrar

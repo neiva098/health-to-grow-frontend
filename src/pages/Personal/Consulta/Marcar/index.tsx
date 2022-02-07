@@ -39,7 +39,7 @@ const AgendarNutricionista = (props: { history: string[] }) => {
           className="data-container"
           onSubmit={async (e) => await handleSubmit(e)}
         >
-          <Schedule history={props.history}actor='Nutricionista' getActors={getNutricionistas} />
+          <Schedule history={props.history}actor='Nutricionista' getActors={getNutricionistas} setSchedule={undefined!} />
 
           <button className="button" type="submit">
             Cadastrar

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ICreateConsulta } from "../../interfaces/appointaments";
 import { IRelationedProfissional } from "../../interfaces/profissional";
 import { getAvaliableAppointaments } from "../../services/api";
 import { errorHandler } from "../../utils/errors";
@@ -7,6 +8,7 @@ interface OwnProps {
   history: string[];
   getActors: () => Promise<IRelationedProfissional[]>
   actor: string
+  setSchedule: (data: string, hora: string, codigoEspecialista: string) => ICreateConsulta
 }
 
 const Schedule = (props: OwnProps) => {
@@ -81,7 +83,10 @@ const Schedule = (props: OwnProps) => {
 
       <label className="form-label">Horario:</label>
       <div className="select-container">
-        <select value={hora} onChange={(e) => setHora(e.target.value)}>
+        <select value={hora} onChange={(e) => {
+          props.setSchedule(data, e.target.value, selectedActor!)
+          setHora(e.target.value)
+        }}>
           <option hidden>Hora</option>
           {disponivelDh
             .find((dh) => dh.data === data)

@@ -11,3 +11,8 @@ export interface IAppointament {
 export interface IAtletaProfile {
   consultas: any[];
 }
+
+export interface ICreateConsulta {
+  dateTime: string,
+  codigoEspecialista: string
+}

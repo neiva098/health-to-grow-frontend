@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const CreateUser = (props: { history: string[] }) => {
   return (
     <div className="container">
-      <div className="form-content">
+      <div className="form-content"> 
         <section className="form-description">
           <MdLibraryBooks size={150} className="icon"></MdLibraryBooks>
           <h1>Cadastre-se</h1>
