@@ -16,7 +16,7 @@ const CreateAthlete = (props: { history: string[] }) => {
   const [consultaPersonal, setConsultaDataPersonal] = useState<any>(undefined)
 
   function setConsultaNutricionista(data: string, hora: string, codigoEspecialista: string) {
-    const dateTime = new Date(`${data}T${hora}`).toISOString()
+    const dateTime = new Date(`${data}T${hora}:00.000-03:00`).toISOString()
 
     console.log(dateTime)
 
