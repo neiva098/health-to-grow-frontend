@@ -4,7 +4,7 @@ import { MdLibraryBooks } from "react-icons/md";
 import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { errorHandler } from "../../../utils/errors";
-import { createAthlete, getNutricionistas, getPersonais } from "../../../services/api";
+import { createUser, getNutricionistas, getPersonais } from "../../../services/api";
 import Schedule from "../../../components/Schedule";
 
 const CreateAthlete = (props: { history: string[] }) => {
@@ -17,8 +17,6 @@ const CreateAthlete = (props: { history: string[] }) => {
 
   function setConsultaNutricionista(data: string, hora: string, codigoEspecialista: string) {
     const dateTime = new Date(`${data}T${hora}:00.000-03:00`).toISOString()
-
-    console.log(dateTime)
 
     setConsultaDataNutri({
       codigoEspecialista,
@@ -46,7 +44,7 @@ const CreateAthlete = (props: { history: string[] }) => {
     event.preventDefault();
 
     try {
-     await createAthlete({
+     await createUser({
         name,
         email,
         password,

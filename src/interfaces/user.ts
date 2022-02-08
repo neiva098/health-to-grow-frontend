@@ -1,3 +1,4 @@
+import { IProfissional } from './profissional';
 import { IAtletaProfile } from "./appointaments";
 
 export interface UserInterface {
@@ -19,6 +20,7 @@ export interface IUser {
   password: string;
 
   atletaProfile?: IAtletaProfile;
+  profissioanlProfile?: Omit<IProfissional, 'codigoPessoa'>
 }
 
 export interface ICreateUser extends Omit<IUser, 'id'> {}

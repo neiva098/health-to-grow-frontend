@@ -19,9 +19,11 @@ const CreatePersonal = (props: { history: string[] }) => {
     try {
       await createPersonal({
         name,
-        email,
-        password,
-        credential: cref,
+          email,
+          password,
+          profissioanlProfile: {
+            credential: cref,
+          }
       });
 
       props.history.push("/");

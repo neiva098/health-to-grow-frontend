@@ -4,7 +4,7 @@ import { AiFillClockCircle } from "react-icons/ai";
 import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Schedule from "../../../../components/Schedule";
-import { getNutricionistas, getPersonais } from "../../../../services/api";
+import { getPersonais } from "../../../../services/api";
 import { errorHandler } from "../../../../utils/errors";
 
 const AgendarPersonal = (props: { history: string[] }) => {

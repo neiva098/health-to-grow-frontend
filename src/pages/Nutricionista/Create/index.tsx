@@ -21,7 +21,9 @@ const CreateNutricionista = (props: { history: string[] }) => {
         name,
         email,
         password,
-        credential: crn,
+        profissioanlProfile: {
+          credential: crn,
+        },
       });
 
       props.history.push("/");

@@ -1,4 +1,4 @@
-import { IRelationedProfissional } from './../interfaces/profissional';
+import { IProfissional, IRelationedProfissional } from './../interfaces/profissional';
 import { ICreateUser, IUser } from './../interfaces/user';
 import axios from "axios";
 import { IAppointament } from "../interfaces/appointaments";
@@ -41,7 +41,7 @@ export const logIn = async (
   return apiResponse.data;
 };
 
-export const createAthlete = async (
+export const createUser = async (
   user: ICreateUser
 ): Promise<IUser> => {
   const res = await publicApi.post('/api/users', user)
@@ -50,27 +50,27 @@ export const createAthlete = async (
 };
 
 export const createPersonal = async (
-  personal: IPersonal
-): Promise<IPersonal> => {
-  return {
-    email: "neivacristiano@yahoo.com.br",
-    id: "id",
-    name: "Cristiano",
-    password: "pass",
-    credential: "cref",
-  };
+  personal: ICreateUser
+): Promise<ICreateUser> => {
+  personal.profissioanlProfile = {
+    ...personal.profissioanlProfile!,
+    credentialType: 'CREF',
+    type: 'personal'
+  }
+
+  return await createUser(personal)
 };
 
 export const createNutricionista = async (
-  nutricionista: INutricionista
-): Promise<INutricionista> => {
-  return {
-    email: "neivacristiano@yahoo.com.br",
-    id: "id",
-    name: "Cristiano",
-    password: "pass",
-    credential: "crn",
-  };
+  nutricionista: ICreateUser
+): Promise<ICreateUser> => {
+  nutricionista.profissioanlProfile = {
+    ...nutricionista.profissioanlProfile!,
+    credentialType: 'CRN',
+    type: 'nutricionista'
+  }
+
+  return await createUser(nutricionista)
 };
 
 export const getNutricionistas = async (): Promise<IRelationedProfissional[]> => {
